@@ -1,12 +1,95 @@
-# React + Vite
+# Smart Banking System & Personal Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+Smart Banking System is an advanced Java-based backend application combined with a modern React frontend dashboard. It integrates multiple banking features including account management, transactions, loan and interest calculations, stock portfolio tracking, expense budgeting, and personal finance insights.
 
-Currently, two official plugins are available:
+The React dashboard consumes REST APIs exposed by the Java backend to display real-time data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Banking Management
+- Multiple account types: Savings, Current, FD.
+- Transactions: deposits, withdrawals, transfers.
+- Loan and interest management.
+
+### Stock Portfolio Management
+- Track investments in stocks.
+- Calculate profit/loss.
+- Simulate stock trading.
+
+### Personal Finance Assistant
+- Track expenses automatically.
+- Predict future spending.
+- Suggest budgets.
+- Categorize transactions.
+
+### Dashboard Features (React + Tailwind)
+- Account summary cards.
+- Stock portfolio list.
+- Recent transactions table.
+- Budget cards with progress bars.
+- Dark/light theme toggle.
+
+---
+
+## Tech Stack
+
+### Backend
+- Java 17
+- Spring Boot
+- REST APIs
+- MySQL (or any relational DB)
+
+### Frontend
+- React 18 (Vite)
+- TailwindCSS for styling
+- React Router for navigation
+- Axios for API calls
+
+---
+
+## Folder Structure (React)
+```
+src/
+├── api/                # All API calls (accounts.js, transactions.js, portfolio.js, budget.js)
+├── components/         # Reusable UI components (AccountCard, PortfolioList, TransactionsTable, BudgetCard, Navbar)
+├── pages/              # Main pages (Dashboard, Accounts, Portfolio, Transactions, Budget)
+├── layouts/            # Layouts (MainLayout)
+├── App.jsx             # Root component with routing
+└── main.jsx
+```
+
+---
+
+## Installation & Setup
+
+### Backend (Java)
+1. Clone the backend repo.
+2. Configure database (MySQL) and update `application.properties`.
+3. Run the Spring Boot application (`mvn spring-boot:run`).
+
+### Frontend (React)
+1. Navigate to the React project folder.
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the development server:
+```bash
+npm run dev
+```
+4. Open `http://localhost:5173` in your browser.
+
+---
+
+## Notes
+- Ensure Java backend is running before starting React frontend.
+- `node_modules` is included in `.gitignore`.
+- API calls are in `src/api/` folder, making it easy to switch endpoints or mock data.
+
+---
+
+## License
+MIT License
