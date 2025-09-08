@@ -23,7 +23,7 @@ Thumbs.db
 
 # Vite cache
 .vite/
-
+setup_project.sh
 # IDE/editor files
 .idea/
 .vscode/
