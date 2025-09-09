@@ -14,7 +14,7 @@ public class UserDAO {
     public void save(User user) {
         String sql = "INSERT INTO users(name, email, passwordHash, userType) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, user.getName());
             pstmt.setString(2, user.getEmail());
@@ -22,7 +22,8 @@ public class UserDAO {
             pstmt.setString(4, user.getUserType());
 
             int rows = pstmt.executeUpdate();
-            if (rows > 0) System.out.println(user.getUserType() + " registered successfully!");
+            if (rows > 0)
+                System.out.println(user.getUserType() + " registered successfully!");
 
         } catch (SQLException e) {
             System.out.println("Error while registering user.");
@@ -34,13 +35,13 @@ public class UserDAO {
     public User findByEmail(String email) {
         String sql = "SELECT * FROM users WHERE email = ?";
         try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                String type = rs.getString("user_type");
+                String type = rs.getString("userType");
                 User user;
 
                 switch (type) {
@@ -56,7 +57,7 @@ public class UserDAO {
 
                 user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
-                user.setPasswordHash(rs.getString("password"));
+                user.setPasswordHash(rs.getString("passwordHash"));
 
                 return user;
             }

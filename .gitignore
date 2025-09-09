@@ -5,6 +5,7 @@
 # Node modules
 frontend/node_modules/
 
+database.db
 # Environment variables
 .env
 
