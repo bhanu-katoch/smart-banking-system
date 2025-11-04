@@ -27,4 +27,6 @@ Thumbs.db
 setup_project.sh
 # IDE/editor files
 .idea/
+backend/classes
 .vscode/
+*.class
