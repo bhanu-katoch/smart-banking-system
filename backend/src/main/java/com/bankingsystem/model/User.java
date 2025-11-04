@@ -1,15 +1,17 @@
 package com.bankingsystem.model;
 
 public abstract class User {
+    protected int id;
     protected String name;
     protected String email;
     protected String passwordHash;
 
     // Default constructor (needed for JDBC mapping)
-    public User() {}
+    public User() {
+    }
 
     // Parameterized constructor
-    public User( String name, String email, String passwordHash) {
+    public User(String name, String email, String passwordHash) {
         this.name = name;
         this.email = email;
         this.passwordHash = passwordHash;
@@ -19,7 +21,14 @@ public abstract class User {
     public abstract String getUserType();
 
     // Getters and setters
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

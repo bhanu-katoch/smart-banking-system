@@ -10,7 +10,11 @@ public class AuthService {
     private UserDAO userDAO = new UserDAO();
 
     // Register a user
-    public boolean register(String name, String email, String password, String userType) {
+    // extra1 / extra2 are type-specific details:
+    // - student: extra1 = college
+    // - professional: extra1 = company
+    // - customer: extra1 = address, extra2 = phone
+    public boolean register(String name, String email, String password, String userType, String extra1, String extra2) {
         // Check if email already exists
         if (userDAO.findByEmail(email) != null) {
             return false; // email already taken
@@ -21,23 +25,36 @@ public class AuthService {
 
         // Create correct User subclass based on userType
         User user;
-        switch (userType.toLowerCase()) {
+        switch (userType == null ? "" : userType.toLowerCase()) {
             case "student":
-                user = new Student();
+                Student s = new Student();
+                s.setCollege(extra1 != null ? extra1 : "");
+                user = s;
                 break;
             case "professional":
-                user = new Professional();
+                Professional p = new Professional();
+                p.setCompany(extra1 != null ? extra1 : "");
+                user = p;
+                break;
+            case "customer":
+                Customer c = new Customer();
+                c.setAddress(extra1 != null ? extra1 : "");
+                c.setPhone(extra2 != null ? extra2 : "");
+                user = c;
                 break;
             default:
                 System.out.println("Invalid user type. Defaulting to Customer.");
-                user = new Student();
+                Customer def = new Customer();
+                def.setAddress(extra1 != null ? extra1 : "");
+                def.setPhone(extra2 != null ? extra2 : "");
+                user = def;
         }
 
         user.setName(name);
         user.setEmail(email);
         user.setPasswordHash(hashedPassword);
 
-        // Save user
+        // Save user + child-table row
         userDAO.save(user);
         return true;
     }

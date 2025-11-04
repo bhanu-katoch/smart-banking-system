@@ -19,6 +19,12 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.42.0.0</version>
         </dependency>
+        <!-- JLine for robust terminal input (arrow keys, raw mode) -->
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>3.23.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>23</maven.compiler.source>

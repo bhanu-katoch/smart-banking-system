@@ -29,7 +29,7 @@ The React dashboard consumes REST APIs exposed by the Java backend to display re
 - 📊 Suggest budgets.
 - 🗂️ Categorize transactions.
 
-#### 🎯 User-specific Smart Banking Services
+### 🎯 User-specific Smart Banking Services
 
 The system offers tailored services for different types of users:
 

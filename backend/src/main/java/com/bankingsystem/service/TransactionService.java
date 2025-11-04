@@ -5,11 +5,15 @@ import com.bankingsystem.dao.TransactionDAO;
 public class TransactionService {
     private TransactionDAO transactionDAO = new TransactionDAO();
 
-    public void deposit(int accountId, double amount) {
-        transactionDAO.recordTransaction(accountId, "deposit", amount);
+    public boolean deposit(int accountId, double amount, String note) {
+        return transactionDAO.deposit(accountId, amount, note);
     }
 
-    public void withdraw(int accountId, double amount) {
-        transactionDAO.recordTransaction(accountId, "withdraw", amount);
+    public boolean withdraw(int accountId, double amount, String note) {
+        return transactionDAO.withdraw(accountId, amount, note);
+    }
+
+    public java.util.List<com.bankingsystem.model.TransactionRecord> getTransactionHistory(int accountId) {
+        return transactionDAO.getTransactionHistory(accountId);
     }
 }
